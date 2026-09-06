@@ -1,0 +1,8 @@
+name = "honda"
+compatibility_date = "2026-08-01"
+pages_build_output_dir = "public"
+
+[vars]
+TOKEN_SECRET = "565e6203fe929a5fa51680463b6000bca7b0033e841823f4"
+SUPABASE_URL = "https://apstfaqnanluppvtcwdb.supabase.co"
+# SUPABASE_SERVICE_KEY aur ADMIN_PASSWORD — Cloudflare dashboard mein Secret ke tor par (kabhi repo mein nahi)

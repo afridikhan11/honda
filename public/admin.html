@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="ur-Latn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Honda Islamabad Admin — NextGen</title>
+<meta name="robots" content="noindex,nofollow">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%230B1220'/><text x='50' y='70' font-size='56' text-anchor='middle'>📱</text></svg>">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Manrope:wght@400;600;700;800&display=swap">
+<style>
+  :root{
+    --bg:#0A101D; --card:#121C30; --card2:#0E1626; --line:#1F2E4A;
+    --ink:#E8EEF7; --mut:#8DA0BC; --ac:#2DD4A7; --ac-d:#0F3D31;
+    --am:#F5B840; --am-d:#3D2F10; --red:#F87171; --red-d:#3A1420;
+  }
+  *{box-sizing:border-box; margin:0; padding:0}
+  body{background:var(--bg); color:var(--ink); font-family:"Manrope",system-ui,sans-serif; font-size:15.5px; line-height:1.55}
+  h1,h2,h3{font-family:"Bricolage Grotesque","Manrope",sans-serif}
+  .wrap{max-width:1000px; margin:0 auto; padding:0 18px}
+  button{font:inherit; cursor:pointer; border:0; border-radius:9px; font-weight:700}
+  input,select{font:inherit; background:var(--card2); border:1.5px solid var(--line); color:var(--ink); border-radius:9px; padding:9px 12px; width:100%}
+  input:focus,select:focus{outline:none; border-color:var(--ac)}
+  label{font-size:12.5px; font-weight:700; color:var(--mut); display:block; margin-bottom:4px; text-transform:uppercase; letter-spacing:.06em}
+  .btn{background:var(--ac); color:#06251c; padding:10px 18px}
+  .btn.gh{background:transparent; border:1.5px solid var(--line); color:var(--ink)}
+  .btn.warn{background:var(--am); color:#2a1e04}
+  .btn.danger{background:var(--red-d); color:var(--red); border:1px solid #5c2130}
+  .btn.sm{padding:6px 12px; font-size:13px}
+  #loginView{min-height:100vh; display:grid; place-items:center; padding:20px}
+  .login-card{background:var(--card); border:1px solid var(--line); border-radius:18px; padding:34px; width:100%; max-width:380px}
+  .brand{display:flex; align-items:center; gap:10px; font-family:"Bricolage Grotesque",sans-serif; font-weight:800; font-size:20px; margin-bottom:6px}
+  .brand .n{width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,#1c4c6e,#0f2a40);display:grid;place-items:center;font-size:20px}
+  .login-card p{color:var(--mut); font-size:14px; margin-bottom:22px}
+  .err{color:var(--red); font-size:13.5px; margin-top:10px; display:none}
+  .err.show{display:block}
+  #appView{display:none}
+  header{border-bottom:1px solid var(--line); background:var(--card2)}
+  .head{display:flex; align-items:center; gap:14px; padding:16px 0}
+  .head h1{font-size:20px}
+  .head .sp{flex:1}
+  .stats{display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); gap:12px; margin:22px 0}
+  .stat{background:var(--card); border:1px solid var(--line); border-radius:12px; padding:14px 16px}
+  .stat b{font-size:24px; font-family:"Bricolage Grotesque",sans-serif; display:block}
+  .stat span{color:var(--mut); font-size:13px; font-weight:600}
+  .stat.g b{color:var(--ac)} .stat.y b{color:var(--am)} .stat.r b{color:var(--red)}
+  .toolbar{display:flex; gap:10px; align-items:center; margin-bottom:16px; flex-wrap:wrap}
+  .toolbar h2{font-size:18px}
+  .toolbar .sp{flex:1}
+  #newForm{display:none; background:var(--card); border:1px solid #2a4d3f; border-radius:14px; padding:22px; margin-bottom:18px}
+  #newForm.show{display:block}
+  .frm{display:grid; grid-template-columns:repeat(auto-fit,minmax(190px,1fr)); gap:14px}
+  .frm .full{grid-column:1/-1}
+  #newForm h3{margin-bottom:14px; color:var(--ac)}
+  .frm-actions{display:flex; gap:10px; margin-top:16px}
+  .shop{background:var(--card); border:1px solid var(--line); border-radius:14px; padding:18px 20px; margin-bottom:14px}
+  .shop-top{display:flex; align-items:center; gap:12px; flex-wrap:wrap}
+  .shop-top h3{font-size:17px}
+  .pill{font-size:11.5px; font-weight:800; letter-spacing:.05em; text-transform:uppercase; padding:4px 12px; border-radius:999px}
+  .pill.active{background:var(--ac-d); color:var(--ac)}
+  .pill.trial{background:var(--am-d); color:var(--am)}
+  .pill.blocked{background:var(--red-d); color:var(--red)}
+  .shop-top .sp{flex:1}
+  .meta{color:var(--mut); font-size:13.5px; margin-top:4px}
+  .shop-body{display:flex; gap:10px; flex-wrap:wrap; align-items:end; margin-top:14px; padding-top:14px; border-top:1px dashed var(--line)}
+  .fld{min-width:150px}
+  .fld.dt{min-width:160px}
+  .users{margin-top:10px; font-size:13.5px; color:var(--mut)}
+  .users b{color:var(--ink)}
+  .ulink{color:var(--ac); cursor:pointer; font-weight:700; font-size:12.5px; margin-left:8px}
+  #toast{position:fixed; bottom:22px; left:50%; transform:translateX(-50%); background:#0d2b22; color:var(--ac); border:1px solid #17563f; padding:10px 22px; border-radius:999px; font-weight:700; display:none; z-index:99}
+  .note{color:var(--mut); font-size:13px; margin-top:20px; padding-bottom:50px}
+</style>
+</head>
+<body>
+
+<div id="loginView">
+  <div class="login-card">
+    <div class="brand"><div class="n">📱</div>Honda Islamabad Admin</div>
+    <p>Sirf NextGen AI Developers — Honda Islamabad clients ka control.</p>
+    <label>Admin password</label>
+    <input type="password" id="lgPass" autocomplete="current-password">
+    <button class="btn" style="width:100%; margin-top:14px" onclick="doLogin()">Login</button>
+    <div class="err" id="lgErr"></div>
+  </div>
+</div>
+
+<div id="appView">
+  <header><div class="wrap head">
+    <h1>Honda Islamabad <span style="color:var(--am)">Admin</span></h1>
+    <div class="sp"></div>
+    <button class="btn gh sm" onclick="loadShops()">↻ Refresh</button>
+    <button class="btn gh sm" onclick="logout()">Logout</button>
+  </div></header>
+
+  <div class="wrap">
+    <div class="stats" id="stats"></div>
+    <div class="toolbar">
+      <h2>Honda Islamabad clients</h2>
+      <div class="sp"></div>
+      <button class="btn" onclick="toggleNew()">+ Nayi Dukan</button>
+    </div>
+
+    <div id="newForm">
+      <h3>Nayi dukan ka account</h3>
+      <div class="frm">
+        <div class="full"><label>Dukan ka naam *</label><input id="nName" placeholder="e.g. BISMILLAH TRADERS"></div>
+        <div><label>Owner ka naam</label><input id="nOwner" placeholder="e.g. Imran"></div>
+        <div><label>Phone</label><input id="nPhone" placeholder="03xx-xxxxxxx"></div>
+        <div><label>Sheher</label><input id="nCity" placeholder="e.g. Karachi"></div>
+        <div><label>Address</label><input id="nAddr" placeholder="Market"></div>
+        <div><label>Owner username *</label><input id="nUser" placeholder="e.g. bismillah"></div>
+        <div><label>Owner password *</label><input id="nPass" placeholder="pehla password"></div>
+        <div><label>Trial (din)</label><input id="nTrial" type="number" value="15" min="0"></div>
+        <div><label>Mahana fees (Rs)</label><input id="nFee" type="number" placeholder="0"></div>
+      </div>
+      <div class="frm-actions">
+        <button class="btn" onclick="createShop()">Account banao</button>
+        <button class="btn gh" onclick="toggleNew()">Cancel</button>
+      </div>
+      <div class="err" id="nErr"></div>
+    </div>
+
+    <div id="shopList"></div>
+    <p class="note">Har dukan ka data bilkul alag hai. <b>Blocked</b> par login foran band; <b>Active</b> par wapis chalu. Trial khatam to login khud ruk jata hai. Nayi dukan banate hi NextGen HQ ki client list mein bhi add ho jati hai.</p>
+  </div>
+</div>
+
+<div id="toast"></div>
+
+<script>
+const API = "/api/admin/";
+let TOKEN = null; try{ TOKEN = localStorage.getItem("hw_admin_token"); }catch(e){}
+let SHOPS = [];
+
+async function call(path, method, body){
+  const r = await fetch(API + path, {
+    method: method || "GET",
+    headers: { "Content-Type":"application/json", ...(TOKEN ? { Authorization: "Bearer " + TOKEN } : {}) },
+    body: body ? JSON.stringify(body) : undefined
+  });
+  const j = await r.json().catch(()=>({ error:"bad response" }));
+  if(r.status === 401 && path !== "login"){ logout(); throw new Error("Session khatam — dobara login karein"); }
+  if(!r.ok || j.error) throw new Error(j.error || ("HTTP " + r.status));
+  return j;
+}
+function toast(m){ const t=document.getElementById("toast"); t.textContent=m; t.style.display="block"; setTimeout(()=>t.style.display="none", 2600); }
+function esc(x){ return String(x==null?"":x).replace(/[&<>"']/g, ch=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[ch])); }
+
+async function doLogin(){
+  const err = document.getElementById("lgErr"); err.classList.remove("show");
+  try{
+    const j = await call("login", "POST", { password: document.getElementById("lgPass").value });
+    TOKEN = j.token; try{ localStorage.setItem("hw_admin_token", TOKEN); }catch(e){}
+    enter();
+  }catch(e){ err.textContent = e.message; err.classList.add("show"); }
+}
+function logout(){ TOKEN=null; try{ localStorage.removeItem("hw_admin_token"); }catch(e){} document.getElementById("appView").style.display="none"; document.getElementById("loginView").style.display="grid"; }
+async function enter(){
+  document.getElementById("loginView").style.display="none";
+  document.getElementById("appView").style.display="block";
+  await loadShops();
+}
+async function loadShops(){
+  try{ const j = await call("shops"); SHOPS = j.shops || []; render(); }
+  catch(e){ toast("⚠ " + e.message); }
+}
+function render(){
+  const c = { total:SHOPS.length, active:0, trial:0, blocked:0 };
+  SHOPS.forEach(s=>{ c[s.status] = (c[s.status]||0)+1; });
+  document.getElementById("stats").innerHTML = `
+    <div class="stat"><b>${c.total}</b><span>Kul dukanein</span></div>
+    <div class="stat g"><b>${c.active||0}</b><span>Active</span></div>
+    <div class="stat y"><b>${c.trial||0}</b><span>Trial par</span></div>
+    <div class="stat r"><b>${c.blocked||0}</b><span>Blocked</span></div>`;
+  const L = document.getElementById("shopList"); L.innerHTML = "";
+  SHOPS.forEach(s=>{
+    const el = document.createElement("div");
+    el.className = "shop";
+    const users = (s.users||[]).map(u=>`<b>${esc(u.username)}</b> (${esc(u.role)})<span class="ulink" onclick="pwReset(${s.id},${u.id},'${esc(u.username)}')">password badlo</span>`).join(" · ");
+    el.innerHTML = `
+      <div class="shop-top">
+        <h3>${esc(s.name)}</h3>
+        <span class="pill ${esc(s.status)}">${esc(s.status)}</span>
+        <div class="sp"></div>
+        ${s.status==="blocked"
+          ? `<button class="btn sm" onclick="setStatus(${s.id},'active')">✓ Unblock</button>`
+          : `<button class="btn danger sm" onclick="setStatus(${s.id},'blocked')">⛔ Block</button>`}
+      </div>
+      <div class="meta">${esc(s.phone||"—")} · ${esc(s.address||"—")} · shop #${s.id}</div>
+      <div class="shop-body">
+        <div class="fld"><label>Status</label>
+          <select id="st${s.id}">
+            <option value="active" ${s.status==="active"?"selected":""}>active</option>
+            <option value="trial" ${s.status==="trial"?"selected":""}>trial</option>
+            <option value="blocked" ${s.status==="blocked"?"selected":""}>blocked</option>
+          </select></div>
+        <div class="fld dt"><label>Trial khatam (date)</label><input type="date" id="tr${s.id}" value="${s.trial_ends||""}"></div>
+        <button class="btn warn sm" onclick="extendTrial(${s.id})">+15 din</button>
+        <button class="btn sm" onclick="saveShop(${s.id})">Save</button>
+      </div>
+      <div class="users">Logins: ${users || "—"}</div>
+      <div id="pwBox${s.id}" style="display:none; margin-top:10px; gap:8px; align-items:end; flex-wrap:wrap"></div>`;
+    L.appendChild(el);
+  });
+}
+function toggleNew(){ document.getElementById("newForm").classList.toggle("show"); }
+async function createShop(){
+  const err = document.getElementById("nErr"); err.classList.remove("show");
+  try{
+    await call("shop.create", "POST", {
+      name: document.getElementById("nName").value.trim(),
+      ownerName: document.getElementById("nOwner").value.trim(),
+      phone: document.getElementById("nPhone").value.trim(),
+      city: document.getElementById("nCity").value.trim(),
+      address: document.getElementById("nAddr").value.trim(),
+      username: document.getElementById("nUser").value.trim(),
+      password: document.getElementById("nPass").value,
+      trial_days: Number(document.getElementById("nTrial").value || 0),
+      monthly_fee: Number(document.getElementById("nFee").value || 0)
+    });
+    toast("✓ Nayi dukan ban gayi");
+    ["nName","nOwner","nPhone","nCity","nAddr","nUser","nPass","nFee"].forEach(id=>document.getElementById(id).value="");
+    toggleNew(); loadShops();
+  }catch(e){ err.textContent = e.message; err.classList.add("show"); }
+}
+async function setStatus(id, status){
+  try{ await call("shop.update", "POST", { id, status, ...(status!=="trial"?{trial_ends:null}:{}) }); toast(status==="blocked" ? "⛔ Dukan block ho gayi" : "✓ Dukan active ho gayi"); loadShops(); }
+  catch(e){ toast("⚠ " + e.message); }
+}
+async function saveShop(id){
+  try{
+    const status = document.getElementById("st"+id).value;
+    const trial_ends = document.getElementById("tr"+id).value || null;
+    await call("shop.update", "POST", { id, status, trial_ends });
+    toast("✓ Save ho gaya"); loadShops();
+  }catch(e){ toast("⚠ " + e.message); }
+}
+async function extendTrial(id){
+  const s = SHOPS.find(x=>x.id===id);
+  const base = s && s.trial_ends && new Date(s.trial_ends) > new Date() ? new Date(s.trial_ends) : new Date();
+  base.setDate(base.getDate() + 15);
+  const d = base.toISOString().slice(0,10);
+  try{ await call("shop.update", "POST", { id, status:"trial", trial_ends:d }); toast("✓ Trial " + d + " tak barha diya"); loadShops(); }
+  catch(e){ toast("⚠ " + e.message); }
+}
+function pwReset(shopId, userId, uname){
+  const box = document.getElementById("pwBox" + shopId);
+  if(box.style.display === "flex"){ box.style.display = "none"; return; }
+  box.style.display = "flex";
+  box.innerHTML = `<div class="fld"><label>${esc(uname)} ka naya password</label><input id="np${userId}" type="text"></div>
+    <button class="btn sm" onclick="pwSave(${shopId},${userId})">Set karo</button>`;
+}
+async function pwSave(shopId, userId){
+  const p = document.getElementById("np"+userId).value;
+  if(!p){ toast("⚠ password likhein"); return; }
+  try{ await call("user.setpass", "POST", { shop_id:shopId, user_id:userId, password:p }); toast("✓ Password badal gaya"); document.getElementById("pwBox"+shopId).style.display="none"; }
+  catch(e){ toast("⚠ " + e.message); }
+}
+document.getElementById("lgPass").addEventListener("keydown", e=>{ if(e.key==="Enter") doLogin(); });
+if(TOKEN) enter();
+</script>
+</body>
+</html>
