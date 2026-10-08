@@ -1,0 +1,10 @@
+google-genai==1.65.0
+browser-use==0.13.11
+SpeechRecognition==3.17.0
+PyAudio==0.2.14
+edge-tts==7.2.8
+pyttsx3
+pyautogui
+pyperclip
+keyboard
+python-dotenv
