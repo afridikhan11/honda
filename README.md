@@ -59,6 +59,3 @@ git push -u origin main
 - Bara data (hazaron records) ho to bootstrap limit badha saktay hain (schema.sql fn_hw_bootstrap).
 
 Software by **NextGen AI Developers** · 0312-2546562
-
-## AI Voice Assistant
-Alag tool: `voice-assistant/` — awaaz se PC, Chrome, Facebook/TikTok chalana (free, Gemini). Detail: `voice-assistant/README.md`.
